@@ -13,7 +13,7 @@
 
 <br/>
 
-<sub>matemática · lógica · estruturas de dados · filosofia &amp; teologia · construir coisas grandes</sub>
+<!-- <sub>matemática · lógica · estruturas de dados · filosofia &amp; teologia· construir coisas grandes</sub> -->
 
 </div>
 
