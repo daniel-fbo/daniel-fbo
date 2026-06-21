@@ -1,0 +1,31 @@
+name: snake
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"   # duas vezes por dia
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gerar animação da cobra
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?palette=github-light&color_snake=d4af37
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=d4af37
+
+      - name: Publicar no branch output
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
