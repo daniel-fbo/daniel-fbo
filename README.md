@@ -8,16 +8,18 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0d1117&text=Daniel%20Filipe&fontColor=d4af37&fontSize=52&fontAlignY=38&desc=Engenharia%20de%20Software%20%C2%B7%20Universidade%20de%20Bras%C3%ADlia&descAlignY=60&descSize=16&animation=fadeIn" width="100%" alt="Daniel Filipe"/>
 
 <a href="https://github.com/daniel-fbo">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=21&pause=900&color=D4AF37&center=true&vCenter=true&width=640&height=42&lines=Construir+%C3%A9+pensar+com+as+m%C3%A3os;Matem%C3%A1tica+%2B+l%C3%B3gica+%2B+c%C3%B3digo;C+%C2%B7+Kotlin+%C2%B7+Python+%C2%B7+TypeScript;Sempre+ca%C3%A7ando+a+pr%C3%B3xima+stack" alt="manifesto" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=21&pause=900&color=D4AF37&center=true&vCenter=true&width=640&height=42&lines=C+%C2%B7+C%2B%2B+%C2%B7+Java;TypeScript+%C2%B7+JavaScript+%C2%B7+Kotlin;L%C3%B3gica+%C2%B7+Ordem+%C2%B7+Transpar%C3%AAncia" alt="manifesto" />
 </a>
 
+
+<br/>
+<br/>
 <br/>
 
-<!-- <sub>matemática · lógica · estruturas de dados · filosofia &amp; teologia· construir coisas grandes</sub> -->
+
+<sub><i>"A Matemática pura é, à sua maneira, a poesia das ideias lógicas."</i></sub>
 
 </div>
-
-> *“Toda ferramenta é um pensamento que tomou forma.”*
 
 <br/>
 
@@ -36,27 +38,32 @@ $ daniel.fbo --status
 
 <br/>
 
-## ⌗ &nbsp;arsenal
+## ⌗ &nbsp;ferramentas
 
 <div align="center">
 
-**Linguagens**
+**Principais**
 
+![Java](https://img.shields.io/badge/Java-37474F?style=for-the-badge&logo=openjdk&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-1565C0?style=for-the-badge&logo=typescript&logoColor=white)
 ![C](https://img.shields.io/badge/C-283593?style=for-the-badge&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-1A237E?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Spring](https://img.shields.io/badge/Spring-1B3A2B?style=for-the-badge&logo=spring&logoColor=6DB33F)
+![Angular](https://img.shields.io/badge/Angular-3D1F2B?style=for-the-badge&logo=angular&logoColor=E23237)
+
+**Secundárias**
+
 ![Python](https://img.shields.io/badge/Python-2E3A59?style=for-the-badge&logo=python&logoColor=d4af37)
-![Java](https://img.shields.io/badge/Java-37474F?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Kotlin](https://img.shields.io/badge/Kotlin-4A148C?style=for-the-badge&logo=kotlin&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-1565C0?style=for-the-badge&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-5D4037?style=for-the-badge&logo=javascript&logoColor=f7df1e)
+![Flask](https://img.shields.io/badge/Flask-2E3440?style=for-the-badge&logo=flask&logoColor=white)
 
-**Web · Mobile · Dados**
+**Auxiliares**
 
-![HTML5](https://img.shields.io/badge/HTML5-263238?style=for-the-badge&logo=html5&logoColor=e34f26)
-![CSS3](https://img.shields.io/badge/CSS3-263238?style=for-the-badge&logo=css3&logoColor=1572b6)
+![Docker](https://img.shields.io/badge/Docker-1F3B4D?style=for-the-badge&logo=docker&logoColor=2496ed)
 ![Node.js](https://img.shields.io/badge/Node.js-1B5E20?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Android](https://img.shields.io/badge/Android-1B2A1B?style=for-the-badge&logo=android&logoColor=3ddc84)
-![SQLite](https://img.shields.io/badge/SQL-31405A?style=for-the-badge&logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-31405A?style=for-the-badge&logo=postgresql&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-2E3440?style=for-the-badge&logo=markdown&logoColor=white)
 
 **Ofício**
 
@@ -69,26 +76,26 @@ $ daniel.fbo --status
 
 <br/>
 
-## ⌗ &nbsp;obras
+## ⌗ &nbsp;projetos
 
-> *Laboratório pessoal* — projetos que faço sozinho, cada um para domar uma stack diferente. 🔒 = privado por enquanto.
+> *Laboratório pessoal* — projetos que faço sozinho, para estudar ferramentas diferentes.
 
-| | projeto | o que é | stack |
+| | nome | o que é | stack principal |
 |:--:|:--|:--|:--|
-| 🔒 | **Organum** | App de organização: tarefas, estudos e rotina | `Kotlin` · `Android` |
+| 🔒 | **Organum** | App de organização: tarefas, estudos e rotina | `Kotlin` |
 | 🔒 | **Papytron** | Pedra · papel · tesoura, jogável na web | `Java` · `TypeScript` |
 | 🔒 | **Khalix** | Calculadora desktop | `Python` · `JavaScript` |
 | 🔒 | **CodeProblems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
-| 🔒 | **Personal-Portfolio** | Site pessoal — código, medalhas, ensaios | `MkDocs` · `Material` |
+| 🔒 | **Personal-Portfolio** | Site pessoal — documentação de código, projetos pessoais | `MkDocs` · `Material` |
 
-> *Acadêmico* — UnB / FGA.
+> *Acadêmico* — UnB (FGA).
 
-| | projeto | o que é | stack |
+| | projeto | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
-| 🔓 | [**Parnas**](https://github.com/FGA0138-MDS-Ajax/2026.1-T01-Parnas) | Projeto de Métodos de Desenvolvimento de Software (em equipe) | `JavaScript` |
-| 🔓 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
-| 🔓 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Projeto final de Algoritmos com banco SQL | `C` · `SQL` |
-| 🔓 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Xadrez modelado em orientação a objetos | `Python` |
+| 📖 | [**Parnas**](https://github.com/FGA0138-MDS-Ajax/2026.1-T01-Parnas) | Plataforma de controle e gestão financeira para microempresas | `Pytest, Vitest & Playwright` |
+| 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
+| 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
+| 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Jogo de Xadrez | `Python` |
 
 <br/>
 
@@ -128,7 +135,7 @@ $ daniel.fbo --status
 <br/>
 
 <div align="center">
-<sub><i>Ordem a partir do caos — uma linha de cada vez.</i></sub>
+<sub><i>"A perfeição do homem consiste não apenas em conhecer a verdade, mas em amá-la".</i></sub>
 <br/>
 <img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=90&color=0d1117" width="100%" alt=""/>
 </div>
