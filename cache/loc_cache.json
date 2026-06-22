@@ -1,1 +1,52 @@
-{}
+{
+  "Edupizzol/ChessGame-OO-EPF": {
+    "commits": 36,
+    "add": 8717,
+    "del": 6541
+  },
+  "daniel-fbo/Code_Problems": {
+    "commits": 1,
+    "add": 1,
+    "del": 0
+  },
+  "daniel-fbo/Khalix": {
+    "commits": 1,
+    "add": 28,
+    "del": 0
+  },
+  "daniel-fbo/Organum": {
+    "commits": 1,
+    "add": 219,
+    "del": 0
+  },
+  "daniel-fbo/PF-APC-2025.1": {
+    "commits": 14,
+    "add": 1258,
+    "del": 53
+  },
+  "daniel-fbo/Papytron": {
+    "commits": 2,
+    "add": 26,
+    "del": 1
+  },
+  "daniel-fbo/Personal_Portifolio": {
+    "commits": 1,
+    "add": 1,
+    "del": 0
+  },
+  "daniel-fbo/Trabalho_ED1_2025.4": {
+    "commits": 40,
+    "add": 3829,
+    "del": 2294
+  },
+  "daniel-fbo/daniel-fbo": {
+    "commits": 4,
+    "add": 579,
+    "del": 42
+  },
+  "nbg-cordeiro/OO-Final-Project": {
+    "commits": 36,
+    "add": 8717,
+    "del": 6541
+  }
+}

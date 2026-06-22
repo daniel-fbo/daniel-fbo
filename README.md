@@ -31,8 +31,14 @@
 ```console
 $ daniel.fbo --status
 
-  carregando métricas pela primeira vez...
-  (a primeira execução do workflow preenche este bloco)
+  idade ............. 18 anos, 356 dias
+  repositórios ...... 8
+  commits ........... 136
+  estrelas .......... 1
+  contribuiu em ..... 4 repositórios
+  linhas de código .. 7.903  (+23.375 / -15.472)
+
+  última atualização  2026-06-22  ·  auto via GitHub Actions
 ```
 <!--END_SECTION:status-->
 
