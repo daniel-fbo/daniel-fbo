@@ -157,8 +157,6 @@ def build_block(years, days, repos, commits, stars, contrib, add, dele):
     lines = [
         "```console",
         "$ daniel.fbo --status",
-        "",
-        f"  idade ............. {years} anos, {days} dias",
         f"  repositórios ...... {repos}",
         f"  commits ........... {commits:,}".replace(",", "."),
         f"  estrelas .......... {stars}",
