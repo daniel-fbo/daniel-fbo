@@ -30,11 +30,13 @@
 <!--START_SECTION:status-->
 ```console
 $ daniel.fbo --status
+
+  idade ............. 18 anos, 356 dias
   repositórios ...... 8
-  commits ........... 136
+  commits ........... 137
   estrelas .......... 1
   contribuiu em ..... 4 repositórios
-  linhas de código .. 7.903  (+23.375 / -15.472)
+  linhas de código .. 7.901  (+23.375 / -15.474)
 
   última atualização  2026-06-22  ·  auto via GitHub Actions
 ```
