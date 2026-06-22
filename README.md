@@ -30,8 +30,6 @@
 <!--START_SECTION:status-->
 ```console
 $ daniel.fbo --status
-
-  idade ............. 18 anos, 356 dias
   repositórios ...... 8
   commits ........... 136
   estrelas .......... 1
