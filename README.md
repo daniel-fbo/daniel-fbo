@@ -25,7 +25,7 @@
 
 ## ⌗ &nbsp;status
 
-<sub>Atualizado diariamente por GitHub Actions — idade, repositórios, commits, estrelas e linhas de código.</sub>
+<sub>Atualizado diariamente por GitHub Actions — repositórios, commits, estrelas e linhas de código.</sub>
 
 <!--START_SECTION:status-->
 ```console
