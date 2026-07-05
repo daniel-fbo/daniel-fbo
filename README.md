@@ -96,7 +96,7 @@ $ daniel.fbo --status
 
 | | projeto | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
-| 📖 | [**Parnas**](https://github.com/FGA0138-MDS-Ajax/2026.1-T01-Parnas) | Plataforma de controle e gestão financeira para microempresas | `Pytest, Vitest & Playwright` |
+| 📖 | [**Credifab**](https://github.com/daniel-fbo/Credifab_MDS_2026.1) | Plataforma de controle e gestão financeira para microempresas | `Pytest, Vitest & Locust` |
 | 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
 | 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
 | 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Jogo de Xadrez | `Python` |
