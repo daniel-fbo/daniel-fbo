@@ -30,13 +30,13 @@
 <!--START_SECTION:status-->
 ```console
 $ daniel.fbo --status
-  repositórios ...... 9
-  commits ........... 214
+  repositórios ...... 8
+  commits ........... 208
   estrelas .......... 1
   contribuiu em ..... 4 repositórios
-  linhas de código .. 78.317  (+116.252 / -37.935)
+  linhas de código .. 67.285  (+105.201 / -37.916)
 
-  última atualização  2026-07-05  ·  auto via GitHub Actions
+  última atualização  2026-07-06  ·  auto via GitHub Actions
 ```
 <!--END_SECTION:status-->
 

@@ -5,9 +5,9 @@
     "del": 6541
   },
   "FGA0138-MDS-Ajax/2026.1-T01-Parnas": {
-    "commits": 63,
-    "add": 81464,
-    "del": 22321
+    "commits": 64,
+    "add": 81469,
+    "del": 22334
   },
   "daniel-fbo/Code_Problems": {
     "commits": 1,
@@ -33,11 +33,6 @@
     "commits": 14,
     "add": 1258,
     "del": 53
-  },
-  "daniel-fbo/Papytron": {
-    "commits": 7,
-    "add": 11056,
-    "del": 32
   },
   "daniel-fbo/Personal_Portifolio": {
     "commits": 1,
