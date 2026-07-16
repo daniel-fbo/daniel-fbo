@@ -108,13 +108,13 @@ $ daniel.fbo --status
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=daniel-fbo&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=00000000&title_color=d4af37&icon_color=d4af37&text_color=9ba3af&ring_color=d4af37" />
-  <img src="https://github-readme-stats.vercel.app/api?username=daniel-fbo&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=00000000&title_color=8a6d1b&icon_color=b8860b&text_color=4b5563&ring_color=b8860b" height="165" alt="stats" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-daniel-fbo.vercel.app/api?username=daniel-fbo&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=00000000&title_color=d4af37&icon_color=d4af37&text_color=9ba3af&ring_color=d4af37" />
+  <img src="https://github-readme-stats-daniel-fbo.vercel.app/api?username=daniel-fbo&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=00000000&title_color=8a6d1b&icon_color=b8860b&text_color=4b5563&ring_color=b8860b" height="165" alt="stats" />
 </picture>
 &nbsp;
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=d4af37&text_color=9ba3af" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=8a6d1b&text_color=4b5563" height="165" alt="top languages" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-daniel-fbo.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=d4af37&text_color=9ba3af" />
+  <img src="https://github-readme-stats-daniel-fbo.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=8a6d1b&text_color=4b5563" height="165" alt="top languages" />
 </picture>
 
 <br/><br/>
