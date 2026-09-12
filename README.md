@@ -89,17 +89,22 @@ $ daniel.fbo --status
 | 🔒 | **Organum** | App de organização: tarefas, estudos e rotina | `Kotlin` |
 | 🔒 | **Papytron** | Pedra · papel · tesoura, jogável na web | `Java` · `TypeScript` |
 | 🔒 | **Khalix** | Calculadora desktop | `Python` · `JavaScript` |
-| 🔒 | **Personal-Portfolio** | Site pessoal — documentação de código, projetos pessoais | `MkDocs` · `Material` |
+| 📖 | **Personal-Portfolio** | Site pessoal — documentação de código, projetos pessoais | `MkDocs` · `Material` |
+| 📖 | **CodeProblems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
+| 📖 | **Programming_Study** | Estudo geral sobre programação | ` General` |
+
 
 > *Acadêmico* — UnB (FGA).
 
 | | projeto | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
-| 📖 | [**Credifab**](https://github.com/daniel-fbo/Credifab_MDS_2026.1) | Plataforma de controle e gestão financeira para microempresas | `Pytest, Vitest & Locust` |
+| 📖 | [**Credifab**](https://github.com/daniel-fbo/Credifab_MDS_2026.1) | Plataforma de controle e gestão financeira para microempresas | `Python` |
+| 📖 | [**Algoritmica**](https://github.com/daniel-fbo/Algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python, JavaScript` |
 | 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
 | 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
 | 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Jogo de Xadrez | `Python` |
-| 📖 | **CodeProblems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
+
+
 
 <br/>
 
