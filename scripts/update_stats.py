@@ -1,321 +1,333 @@
 #!/usr/bin/env python3
 """
-Atualiza o bloco <!--START_SECTION:status--> do README com dados ao vivo
-do GitHub: idade, repositórios, commits, estrelas e linhas de código.
+Calcula o percentual de linguagens que o usuário realmente escreveu,
+somando linhas adicionadas (git log --numstat) em uma lista curada de
+repositórios (próprios ou de terceiros), e atualiza:
+  - assets/lang-stats-dark.svg
+  - assets/lang-stats-light.svg
+  - README.md (bloco entre os marcadores LANG-STATS)
 
-Uso (local):
-    GH_TOKEN=ghp_xxx USER_NAME=daniel-fbo python scripts/update_stats.py
-
-No GitHub Actions o GH_TOKEN vem de um secret (ver SETUP.md).
-
-NOTA sobre os números:
-  - "repositórios" conta TODOS os repos onde você é owner, inclusive
-    privados (o token enxerga o que a página pública deslogada não vê).
-  - "estrelas" soma só estrelas de repositórios que você possui
-    (ownerAffiliations: [OWNER]) — repositórios de organização (ex:
-    projetos de grupo da faculdade) NÃO entram aqui, mesmo que você seja
-    colaborador; eles aparecem em "contribuiu em X repositórios".
+Não depende de nenhuma API externa de terceiros. Só usa `git` (CLI) e a
+biblioteca padrão do Python.
 """
 
+import json
 import os
 import re
+import subprocess
 import sys
-import json
+import tempfile
 import time
-import datetime
-import pathlib
+import urllib.request
+import urllib.error
 
-import requests
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPOS_FILE = os.path.join(REPO_ROOT, "scripts", "repos.txt")
+AUTHORS_FILE = os.path.join(REPO_ROOT, "scripts", "authors.txt")
+CACHE_FILE = os.path.join(REPO_ROOT, "cache", "loc_cache.json")
+ASSETS_DIR = os.path.join(REPO_ROOT, "assets")
+README_FILE = os.path.join(REPO_ROOT, "README.md")
 
-# ──────────────────────────────────────────────────────────────────────────
-# Configuração
-# ──────────────────────────────────────────────────────────────────────────
+TOP_N = 8
+MARKER_START = "<!--LANG-STATS:START-->"
+MARKER_END = "<!--LANG-STATS:END-->"
 
-USER = os.environ.get("USER_NAME", "daniel-fbo")
-TOKEN = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+GH_TOKEN = os.environ.get("GH_TOKEN", "")
+USER_NAME = os.environ.get("USER_NAME", "")
 
-# >>> AJUSTE AQUI: sua data de nascimento (ano, mês, dia) <<<
-BIRTHDAY = datetime.date(2007, 7, 1)
-
-README = pathlib.Path("README.md")
-CACHE = pathlib.Path("cache/loc_cache.json")
-API = "https://api.github.com/graphql"
-
-MAX_RETRIES = 3
-RETRY_BASE_DELAY = 2  # segundos; backoff exponencial: 2, 4, 8...
-
-if not TOKEN:
-    sys.exit("ERRO: defina GH_TOKEN (ou GITHUB_TOKEN) no ambiente.")
-
-HEADERS = {"Authorization": f"bearer {TOKEN}"}
-
-
-def log(msg):
-    """Log simples pro stderr — aparece no output do GitHub Actions."""
-    print(msg, file=sys.stderr, flush=True)
-
-
-# ──────────────────────────────────────────────────────────────────────────
-# Helpers
-# ──────────────────────────────────────────────────────────────────────────
-
-def gql(query, variables=None):
-    """Executa uma query GraphQL com retry/backoff e devolve o nó `data`."""
-    last_exc = None
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            resp = requests.post(
-                API,
-                json={"query": query, "variables": variables or {}},
-                headers=HEADERS,
-                timeout=30,
-            )
-            resp.raise_for_status()
-            payload = resp.json()
-            if "errors" in payload:
-                raise RuntimeError(payload["errors"])
-            return payload["data"]
-        except Exception as exc:
-            last_exc = exc
-            if attempt < MAX_RETRIES:
-                delay = RETRY_BASE_DELAY ** attempt
-                log(f"  ⚠️  tentativa {attempt}/{MAX_RETRIES} falhou ({exc}); "
-                    f"nova tentativa em {delay}s")
-                time.sleep(delay)
-    # esgotou as tentativas
-    raise last_exc
-
-
-def validate_token():
-    """Confere se o token é válido e corresponde ao USER esperado.
-    Falha rápido (sem gastar tempo com walk_repo) se algo estiver errado."""
-    query = "query { viewer { login } }"
-    try:
-        data = gql(query)
-    except Exception as exc:
-        sys.exit(f"ERRO: token inválido ou expirado — {exc}")
-
-    viewer_login = data["viewer"]["login"]
-    if viewer_login.lower() != USER.lower():
-        log(f"  ⚠️  aviso: token pertence a '{viewer_login}', "
-            f"mas USER_NAME é '{USER}'. Repositórios privados de "
-            f"'{USER}' podem não aparecer.")
-
-
-def human_age(bday):
-    """Retorna (anos, dias) desde a data de nascimento."""
-    today = datetime.date.today()
-    years = today.year - bday.year - ((today.month, today.day) < (bday.month, bday.day))
-    last_birthday = bday.replace(year=bday.year + years)
-    days = (today - last_birthday).days
-    return years, days
-
-
-# ──────────────────────────────────────────────────────────────────────────
-# Queries
-# ──────────────────────────────────────────────────────────────────────────
-
-Q_OVERVIEW = """
-query($login: String!) {
-  user(login: $login) {
-    id
-    repositories(first: 100, isFork: false, ownerAffiliations: [OWNER],
-                 orderBy: {field: STARGAZERS, direction: DESC}) {
-      totalCount
-      nodes { nameWithOwner stargazerCount }
-    }
-    repositoriesContributedTo(first: 100,
-                              contributionTypes: [COMMIT, PULL_REQUEST]) {
-      totalCount
-      nodes { nameWithOwner }
-    }
-  }
+# Extensão -> linguagem. Só extensões de código de verdade; arquivos de
+# config/dados/docs são ignorados de propósito (não contam como "linguagem escrita").
+EXT_TO_LANG = {
+    ".py": "Python",
+    ".ipynb": "Jupyter Notebook",
+    ".js": "JavaScript",
+    ".jsx": "JavaScript",
+    ".mjs": "JavaScript",
+    ".ts": "TypeScript",
+    ".tsx": "TypeScript",
+    ".java": "Java",
+    ".c": "C",
+    ".h": "C",
+    ".cpp": "C++",
+    ".cc": "C++",
+    ".cxx": "C++",
+    ".hpp": "C++",
+    ".cs": "C#",
+    ".go": "Go",
+    ".rb": "Ruby",
+    ".php": "PHP",
+    ".html": "HTML",
+    ".htm": "HTML",
+    ".css": "CSS",
+    ".scss": "SCSS",
+    ".sass": "Sass",
+    ".sh": "Shell",
+    ".bash": "Shell",
+    ".sql": "SQL",
+    ".kt": "Kotlin",
+    ".kts": "Kotlin",
+    ".swift": "Swift",
+    ".rs": "Rust",
+    ".dart": "Dart",
+    ".r": "R",
+    ".m": "Objective-C",
+    ".lua": "Lua",
+    ".pl": "Perl",
+    ".scala": "Scala",
+    ".hs": "Haskell",
+    ".ex": "Elixir",
+    ".exs": "Elixir",
+    ".clj": "Clojure",
+    ".vue": "Vue",
+    ".jl": "Julia",
+    ".erl": "Erlang",
 }
-"""
 
-Q_COUNT = """
-query($owner: String!, $name: String!, $id: ID!) {
-  repository(owner: $owner, name: $name) {
-    defaultBranchRef {
-      target { ... on Commit { history(author: {id: $id}) { totalCount } } }
-    }
-  }
+# Cores aproximadas do GitHub Linguist, pra manter familiaridade visual.
+LANG_COLORS = {
+    "Python": "#3572A5",
+    "Jupyter Notebook": "#DA5B0B",
+    "JavaScript": "#f1e05a",
+    "TypeScript": "#3178c6",
+    "Java": "#b07219",
+    "C": "#555555",
+    "C++": "#f34b7d",
+    "C#": "#178600",
+    "Go": "#00ADD8",
+    "Ruby": "#701516",
+    "PHP": "#4F5D95",
+    "HTML": "#e34c26",
+    "CSS": "#563d7c",
+    "SCSS": "#c6538c",
+    "Sass": "#a53b70",
+    "Shell": "#89e051",
+    "SQL": "#e38c00",
+    "Kotlin": "#A97BFF",
+    "Swift": "#F05138",
+    "Rust": "#dea584",
+    "Dart": "#00B4AB",
+    "R": "#198CE7",
+    "Objective-C": "#438eff",
+    "Lua": "#000080",
+    "Perl": "#0298c3",
+    "Scala": "#c22d40",
+    "Haskell": "#5e5086",
+    "Elixir": "#6e4a7e",
+    "Clojure": "#db5855",
+    "Vue": "#41b883",
+    "Julia": "#a270ba",
+    "Erlang": "#B83998",
 }
-"""
-
-Q_HISTORY = """
-query($owner: String!, $name: String!, $id: ID!, $cursor: String) {
-  repository(owner: $owner, name: $name) {
-    defaultBranchRef {
-      target {
-        ... on Commit {
-          history(first: 100, author: {id: $id}, after: $cursor) {
-            totalCount
-            pageInfo { hasNextPage endCursor }
-            nodes { additions deletions }
-          }
-        }
-      }
-    }
-  }
-}
-"""
+DEFAULT_COLOR = "#d4af37"
 
 
-def commit_count(owner, name, uid):
-    """Número de commits do usuário no branch padrão (barato: 1 query)."""
-    data = gql(Q_COUNT, {"owner": owner, "name": name, "id": uid})
-    ref = data["repository"]["defaultBranchRef"]
-    if not ref or not ref.get("target"):
-        return 0
-    return ref["target"]["history"]["totalCount"]
-
-
-def walk_repo(owner, name, uid):
-    """Caminha todo o histórico do usuário: (commits, additions, deletions)."""
-    add = dele = commits = 0
-    cursor = None
-    while True:
-        data = gql(Q_HISTORY, {"owner": owner, "name": name, "id": uid, "cursor": cursor})
-        ref = data["repository"]["defaultBranchRef"]
-        if not ref or not ref.get("target"):
-            break
-        hist = ref["target"]["history"]
-        commits = hist["totalCount"]
-        for node in hist["nodes"]:
-            add += node["additions"]
-            dele += node["deletions"]
-        if hist["pageInfo"]["hasNextPage"]:
-            cursor = hist["pageInfo"]["endCursor"]
-        else:
-            break
-    return commits, add, dele
-
-
-# ──────────────────────────────────────────────────────────────────────────
-# README
-# ──────────────────────────────────────────────────────────────────────────
-
-def build_block(repos, commits, stars, contrib, add, dele, skipped):
-    net = add - dele
-    today = datetime.date.today().isoformat()
-    lines = [
-        "```console",
-        "$ daniel.fbo --status",
-        f"  repositórios ...... {repos}",
-        f"  commits ........... {commits:,}".replace(",", "."),
-        f"  estrelas .......... {stars}",
-        f"  contribuiu em ..... {contrib} repositórios",
-        f"  linhas de código .. {net:,}  (+{add:,} / -{dele:,})".replace(",", "."),
-    ]
-    if skipped:
-        lines.append(
-            f"  aviso .............. {len(skipped)} repositório(s) pulado(s) "
-            f"por erro (ver logs do Actions)"
-        )
-    lines += [
-        "",
-        f"  última atualização  {today}  ·  auto via GitHub Actions",
-        "```",
-    ]
-    return "\n".join(lines)
-
-
-def replace_section(text, key, content):
-    pattern = re.compile(
-        rf"(<!--START_SECTION:{key}-->)(.*?)(<!--END_SECTION:{key}-->)", re.S
+def run(cmd, cwd=None):
+    result = subprocess.run(
+        cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
     )
-    return pattern.sub(lambda m: f"{m.group(1)}\n{content}\n{m.group(3)}", text)
+    return result.returncode, result.stdout, result.stderr
 
 
-# ──────────────────────────────────────────────────────────────────────────
-# Main
-# ──────────────────────────────────────────────────────────────────────────
+def load_list(path):
+    if not os.path.exists(path):
+        return []
+    items = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#"):
+                items.append(line)
+    return items
+
+
+def clone_repo(owner_repo, dest_dir):
+    if GH_TOKEN:
+        url = f"https://x-access-token:{GH_TOKEN}@github.com/{owner_repo}.git"
+    else:
+        url = f"https://github.com/{owner_repo}.git"
+    code, out, err = run(["git", "clone", "--quiet", url, dest_dir])
+    if code != 0:
+        print(f"  [aviso] falha ao clonar {owner_repo}: {err.strip()}", file=sys.stderr)
+        return False
+    return True
+
+
+def author_regex(patterns):
+    escaped = [re.escape(p) for p in patterns if p.strip()]
+    if not escaped:
+        return None
+    return re.compile("|".join(escaped), re.IGNORECASE)
+
+
+def analyze_repo(repo_dir, author_re):
+    """Retorna (commits, add, del, {linguagem: linhas_adicionadas})."""
+    code, out, err = run(
+        [
+            "git",
+            "log",
+            "--no-merges",
+            "--pretty=format:@@%H|%an|%ae",
+            "--numstat",
+        ],
+        cwd=repo_dir,
+    )
+    if code != 0:
+        print(f"  [aviso] git log falhou: {err.strip()}", file=sys.stderr)
+        return 0, 0, 0, {}
+
+    commits = 0
+    total_add = 0
+    total_del = 0
+    lang_add = {}
+    counting = False
+
+    for line in out.splitlines():
+        if line.startswith("@@"):
+            _, an, ae = line[2:].split("|", 2)
+            counting = bool(author_re.search(an) or author_re.search(ae))
+            if counting:
+                commits += 1
+            continue
+        if not counting or not line.strip():
+            continue
+        parts = line.split("\t")
+        if len(parts) != 3:
+            continue
+        add_s, del_s, path = parts
+        if add_s == "-" or del_s == "-":
+            continue  # arquivo binário
+        add_n, del_n = int(add_s), int(del_s)
+        total_add += add_n
+        total_del += del_n
+        ext = os.path.splitext(path)[1].lower()
+        lang = EXT_TO_LANG.get(ext)
+        if lang:
+            lang_add[lang] = lang_add.get(lang, 0) + add_n
+
+    return commits, total_add, total_del, lang_add
+
+
+def build_svg(lang_percentages, title_color, text_color):
+    row_h = 30
+    width = 300
+    height = 40 + row_h * len(lang_percentages)
+    rows = []
+    y = 40
+    for lang, pct in lang_percentages:
+        color = LANG_COLORS.get(lang, DEFAULT_COLOR)
+        bar_w = max(2, int(pct / 100 * 160))
+        rows.append(f"""
+  <text x="0" y="{y - 6}" font-size="12" fill="{text_color}" font-family="'Segoe UI', Ubuntu, sans-serif">{lang}</text>
+  <text x="290" y="{y - 6}" font-size="12" fill="{text_color}" font-family="'Segoe UI', Ubuntu, sans-serif" text-anchor="end">{pct:.1f}%</text>
+  <rect x="0" y="{y}" width="160" height="6" rx="3" fill="{text_color}" opacity="0.15" />
+  <rect x="0" y="{y}" width="{bar_w}" height="6" rx="3" fill="{color}" />
+""")
+        y += row_h
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+  <style>
+    text {{ font-family: 'Segoe UI', Ubuntu, sans-serif; }}
+  </style>
+  <text x="0" y="20" font-size="16" font-weight="600" fill="{title_color}">Linguagens mais usadas</text>
+  <g transform="translate(10, 0)">
+    {''.join(rows)}
+  </g>
+</svg>"""
+    return svg
+
+
+def update_readme(timestamp):
+    if not os.path.exists(README_FILE):
+        print("  [aviso] README.md não encontrado, pulando atualização do README.")
+        return
+    with open(README_FILE, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    block = f"""{MARKER_START}
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/{USER_NAME}/{USER_NAME}/main/assets/lang-stats-dark.svg?v={timestamp}" />
+  <img src="https://raw.githubusercontent.com/{USER_NAME}/{USER_NAME}/main/assets/lang-stats-light.svg?v={timestamp}" height="220" alt="top languages" />
+</picture>
+
+</div>
+{MARKER_END}"""
+
+    if MARKER_START in content and MARKER_END in content:
+        pattern = re.compile(
+            re.escape(MARKER_START) + r".*?" + re.escape(MARKER_END), re.DOTALL
+        )
+        content = pattern.sub(block, content)
+    else:
+        content = content.rstrip() + "\n\n" + block + "\n"
+
+    with open(README_FILE, "w", encoding="utf-8") as f:
+        f.write(content)
+
 
 def main():
-    validate_token()
+    if not USER_NAME:
+        print("USER_NAME não definido.", file=sys.stderr)
+        sys.exit(1)
 
-    text = README.read_text(encoding="utf-8")
+    repos = load_list(REPOS_FILE)
+    author_patterns = load_list(AUTHORS_FILE)
+    author_re = author_regex(author_patterns)
+    if not repos or not author_re:
+        print("Configure scripts/repos.txt e scripts/authors.txt antes de rodar.", file=sys.stderr)
+        sys.exit(1)
 
-    user = gql(Q_OVERVIEW, {"login": USER})["user"]
-    uid = user["id"]
-    owned = user["repositories"]["nodes"]
-    repos_count = user["repositories"]["totalCount"]
-    stars = sum(r["stargazerCount"] for r in owned)
-    contrib = user["repositoriesContributedTo"]["totalCount"]
+    per_repo = {}
+    total_lang_add = {}
 
-    # repositórios a varrer para commits + LOC (próprios + contribuídos)
-    scan = {r["nameWithOwner"] for r in owned}
-    scan |= {r["nameWithOwner"] for r in user["repositoriesContributedTo"]["nodes"]}
+    with tempfile.TemporaryDirectory() as tmp:
+        for owner_repo in repos:
+            print(f"Analisando {owner_repo}...")
+            dest = os.path.join(tmp, owner_repo.replace("/", "__"))
+            if not clone_repo(owner_repo, dest):
+                continue
+            commits, add, dele, lang_add = analyze_repo(dest, author_re)
+            per_repo[owner_repo] = {
+                "commits": commits,
+                "add": add,
+                "del": dele,
+                "languages": lang_add,
+            }
+            for lang, n in lang_add.items():
+                total_lang_add[lang] = total_lang_add.get(lang, 0) + n
 
-    cache = {}
-    if CACHE.exists():
-        try:
-            cache = json.loads(CACHE.read_text())
-        except Exception:
-            cache = {}
+    os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(
+            {"updated_at": int(time.time()), "repos": per_repo},
+            f,
+            indent=2,
+            ensure_ascii=False,
+        )
 
-    total_commits = total_add = total_del = 0
-    fresh = {}
-    skipped = []
+    total = sum(total_lang_add.values())
+    if total == 0:
+        print("Nenhuma linha atribuída ao autor foi encontrada. Confira scripts/authors.txt.", file=sys.stderr)
+        sys.exit(1)
 
-    for full in sorted(scan):
-        owner, name = full.split("/", 1)
-        try:
-            count = commit_count(owner, name, uid)
-        except Exception as exc:
-            log(f"  ⚠️  pulei {full} (falha ao contar commits): {exc}")
-            skipped.append(full)
-            continue
-        if count == 0:
-            continue
+    ranked = sorted(total_lang_add.items(), key=lambda kv: kv[1], reverse=True)[:TOP_N]
+    percentages = [(lang, n / total * 100) for lang, n in ranked]
 
-        cached = cache.get(full)
-        if cached and cached.get("commits") == count:
-            # nada mudou desde a última corrida — reaproveita o cache
-            c, a, d = count, cached["add"], cached["del"]
-        else:
-            try:
-                c, a, d = walk_repo(owner, name, uid)
-            except Exception as exc:
-                if cached:
-                    log(f"  ⚠️  {full}: falha ao atualizar histórico ({exc}); "
-                        f"usando valores em cache")
-                    c, a, d = cached["commits"], cached["add"], cached["del"]
-                else:
-                    log(f"  ⚠️  pulei {full} (falha ao ler histórico, sem "
-                        f"cache anterior): {exc}")
-                    skipped.append(full)
-                    continue
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+    dark_svg = build_svg(percentages, title_color="#d4af37", text_color="#9ba3af")
+    light_svg = build_svg(percentages, title_color="#8a6d1b", text_color="#4b5563")
 
-        fresh[full] = {"commits": c, "add": a, "del": d}
-        total_commits += c
-        total_add += a
-        total_del += d
+    with open(os.path.join(ASSETS_DIR, "lang-stats-dark.svg"), "w", encoding="utf-8") as f:
+        f.write(dark_svg)
+    with open(os.path.join(ASSETS_DIR, "lang-stats-light.svg"), "w", encoding="utf-8") as f:
+        f.write(light_svg)
 
-    CACHE.parent.mkdir(parents=True, exist_ok=True)
-    CACHE.write_text(json.dumps(fresh, indent=2))
+    update_readme(timestamp=int(time.time()))
 
-    if skipped:
-        log(f"\nResumo: {len(skipped)} repositório(s) pulado(s) nesta execução: "
-            f"{', '.join(skipped)}")
-
-    block = build_block(
-        repos_count, total_commits, stars, contrib, total_add, total_del, skipped
-    )
-    new_text = replace_section(text, "status", block)
-
-    if new_text != text:
-        README.write_text(new_text, encoding="utf-8")
-        print("README atualizado.")
-    else:
-        print("Nenhuma mudança no README.")
-
-    # Se algum repo foi pulado, sinaliza no exit code (não falha o job,
-    # mas fica registrado no log e pode ser usado por um step condicional
-    # no workflow, ex: `if: steps.stats.outputs.skipped != '0'`).
-    if skipped:
-        log(f"::warning::{len(skipped)} repositório(s) pulado(s) ao atualizar métricas")
+    print("\nResultado:")
+    for lang, pct in percentages:
+        print(f"  {lang:<18} {pct:5.1f}%")
 
 
 if __name__ == "__main__":
