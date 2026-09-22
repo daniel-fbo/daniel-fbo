@@ -116,11 +116,11 @@
     }
   },
   "daniel-fbo/daniel-fbo": {
-    "commits": 14,
-    "add": 993,
-    "del": 376,
+    "commits": 15,
+    "add": 1356,
+    "del": 794,
     "languages": {
-      "Python": 648
+      "Python": 864
     }
   },
   "nbg-cordeiro/OO-Final-Project": {
