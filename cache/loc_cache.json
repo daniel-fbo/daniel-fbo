@@ -2,76 +2,154 @@
   "Edupizzol/ChessGame-OO-EPF": {
     "commits": 36,
     "add": 8717,
-    "del": 6541
+    "del": 6541,
+    "languages": {
+      "Python": 415,
+      "CSS": 1197,
+      "JavaScript": 0,
+      "HTML": 0
+    }
   },
   "FGA0138-MDS-Ajax/2026.1-T01-Parnas": {
     "commits": 64,
     "add": 81469,
-    "del": 22334
+    "del": 22334,
+    "languages": {
+      "Python": 7110,
+      "JavaScript": 4098,
+      "CSS": 1810
+    }
   },
-  "daniel-fbo/2026.1-T03-Lamport": {
+  "FGA0138-MDS-Ajax/2026.1-T03-Lamport": {
     "commits": 1,
     "add": 28,
-    "del": 0
+    "del": 0,
+    "languages": {}
+  },
+  "FGA0138-MDS-Ajax/2026.2-T03-Lamport": {
+    "commits": 1,
+    "add": 28,
+    "del": 0,
+    "languages": {}
+  },
+  "FGA0138-MDS-Ajax/2026.2-T03-Perlman": {
+    "commits": 1,
+    "add": 28,
+    "del": 0,
+    "languages": {}
   },
   "daniel-fbo/Code_Problems": {
     "commits": 3,
     "add": 464,
-    "del": 1
+    "del": 1,
+    "languages": {
+      "C": 374
+    }
   },
   "daniel-fbo/Diagrama_Bifurcacao": {
     "commits": 6,
     "add": 381,
-    "del": 105
+    "del": 105,
+    "languages": {
+      "Jupyter Notebook": 237
+    }
   },
   "daniel-fbo/Grupo13_COMPILADORES_2026_2": {
     "commits": 1,
     "add": 2,
-    "del": 0
+    "del": 0,
+    "languages": {}
   },
   "daniel-fbo/Khalix": {
     "commits": 1,
     "add": 28,
-    "del": 0
+    "del": 0,
+    "languages": {}
   },
   "daniel-fbo/Organum": {
     "commits": 1,
     "add": 219,
-    "del": 0
+    "del": 0,
+    "languages": {}
   },
   "daniel-fbo/PF-APC-2025.1": {
     "commits": 14,
     "add": 1258,
-    "del": 53
+    "del": 53,
+    "languages": {
+      "SQL": 14,
+      "C": 966,
+      "CSS": 30
+    }
+  },
+  "daniel-fbo/PS_CJR": {
+    "commits": 7,
+    "add": 867,
+    "del": 51,
+    "languages": {}
   },
   "daniel-fbo/Personal_Portifolio": {
     "commits": 1,
     "add": 1,
-    "del": 0
+    "del": 0,
+    "languages": {}
   },
   "daniel-fbo/Programming_Study": {
-    "commits": 1,
-    "add": 298,
-    "del": 0
+    "commits": 9,
+    "add": 5719,
+    "del": 18,
+    "languages": {
+      "Python": 65,
+      "HTML": 24,
+      "JavaScript": 16,
+      "C": 4098,
+      "Kotlin": 9,
+      "CSS": 32
+    }
   },
   "daniel-fbo/Trabalho_ED1_2025.4": {
     "commits": 40,
     "add": 3829,
-    "del": 2294
+    "del": 2294,
+    "languages": {
+      "C": 1798
+    }
   },
   "daniel-fbo/daniel-fbo": {
-    "commits": 12,
-    "add": 683,
-    "del": 74
+    "commits": 14,
+    "add": 993,
+    "del": 376,
+    "languages": {
+      "Python": 648
+    }
   },
   "nbg-cordeiro/OO-Final-Project": {
     "commits": 36,
     "add": 8717,
-    "del": 6541
+    "del": 6541,
+    "languages": {
+      "Python": 415,
+      "CSS": 1197,
+      "JavaScript": 0,
+      "HTML": 0
+    }
   },
   "projeto-de-algoritmos-2026/G17_Grafos_PA-26.2_Algoritmica": {
     "commits": 11,
     "add": 1231,
-    "del": 384
+    "del": 384,
+    "languages": {
+      "Python": 208,
+      "HTML": 60,
+      "JavaScript": 380
+    }
+  },
+  "projeto-de-algoritmos-2026/G17_Greed_PA-26.2": {
+    "commits": 6,
+    "add": 242,
+    "del": 15,
+    "languages": {
+      "Python": 6
+    }
   }
 }

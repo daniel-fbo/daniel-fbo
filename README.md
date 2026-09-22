@@ -1,8 +1,3 @@
-<!-- ───────────────────────────────────────────────────────────────────── -->
-<!--  daniel-fbo · profile README                                          -->
-<!--  O bloco "status" é gerado automaticamente — não edite à mão.         -->
-<!-- ───────────────────────────────────────────────────────────────────── -->
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0d1117&text=Daniel%20Filipe&fontColor=d4af37&fontSize=52&fontAlignY=38&desc=Engenharia%20de%20Software%20%C2%B7%20Universidade%20de%20Bras%C3%ADlia&descAlignY=60&descSize=16&animation=fadeIn" width="100%" alt="Daniel Filipe"/>
@@ -31,12 +26,12 @@
 ```console
 $ daniel.fbo --status
   repositórios ...... 11
-  commits ........... 228
+  commits ........... 253
   estrelas .......... 4
-  contribuiu em ..... 5 repositórios
-  linhas de código .. 68.998  (+107.325 / -38.327)
+  contribuiu em ..... 9 repositórios
+  linhas de código .. 75.508  (+114.221 / -38.713)
 
-  última atualização  2026-09-12  ·  auto via GitHub Actions
+  última atualização  2026-09-22  ·  auto via GitHub Actions
 ```
 <!--END_SECTION:status-->
 
@@ -113,8 +108,8 @@ $ daniel.fbo --status
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-daniel-fbo.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=d4af37&text_color=9ba3af" />
-  <img src="https://github-readme-stats-daniel-fbo.vercel.app/api/top-langs/?username=daniel-fbo&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=8a6d1b&text_color=4b5563" height="165" alt="top languages" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daniel-fbo/daniel-fbo/main/assets/lang-stats-dark.svg" />
+  <img src="https://raw.githubusercontent.com/daniel-fbo/daniel-fbo/main/assets/lang-stats-light.svg" height="280" alt="top languages" />
 </picture>
 
 <br/><br/>
