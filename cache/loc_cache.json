@@ -55,10 +55,13 @@
     }
   },
   "daniel-fbo/Grupo13_COMPILADORES_2026_2": {
-    "commits": 1,
-    "add": 2,
-    "del": 0,
-    "languages": {}
+    "commits": 4,
+    "add": 89,
+    "del": 1798,
+    "languages": {
+      "JavaScript": 0,
+      "C": 0
+    }
   },
   "daniel-fbo/Khalix": {
     "commits": 1,
