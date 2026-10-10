@@ -55,11 +55,11 @@
     }
   },
   "daniel-fbo/Grupo13_COMPILADORES_2026_2": {
-    "commits": 5,
-    "add": 723,
-    "del": 1897,
+    "commits": 8,
+    "add": 1755,
+    "del": 2216,
     "languages": {
-      "C": 146,
+      "C": 624,
       "JavaScript": 0
     }
   },
