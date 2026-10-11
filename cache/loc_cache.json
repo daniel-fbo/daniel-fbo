@@ -39,11 +39,14 @@
     "languages": {}
   },
   "daniel-fbo/Code_Problems": {
-    "commits": 3,
-    "add": 464,
+    "commits": 4,
+    "add": 803,
     "del": 1,
     "languages": {
-      "C": 374
+      "C++": 76,
+      "C": 547,
+      "Python": 17,
+      "Rust": 55
     }
   },
   "daniel-fbo/Diagrama_Bifurcacao": {
@@ -98,8 +101,8 @@
     "languages": {}
   },
   "daniel-fbo/Programming_Study": {
-    "commits": 10,
-    "add": 5761,
+    "commits": 11,
+    "add": 5789,
     "del": 18,
     "languages": {
       "Python": 65,
@@ -119,8 +122,8 @@
     }
   },
   "daniel-fbo/daniel-fbo": {
-    "commits": 15,
-    "add": 1356,
+    "commits": 16,
+    "add": 1359,
     "del": 794,
     "languages": {
       "Python": 864
