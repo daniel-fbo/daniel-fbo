@@ -39,12 +39,12 @@
     "languages": {}
   },
   "daniel-fbo/Code_Problems": {
-    "commits": 4,
-    "add": 803,
-    "del": 1,
+    "commits": 6,
+    "add": 1797,
+    "del": 2,
     "languages": {
-      "C++": 76,
-      "C": 547,
+      "C": 583,
+      "C++": 132,
       "Python": 17,
       "Rust": 55
     }
@@ -58,11 +58,11 @@
     }
   },
   "daniel-fbo/Grupo13_COMPILADORES_2026_2": {
-    "commits": 8,
-    "add": 1755,
-    "del": 2216,
+    "commits": 12,
+    "add": 4732,
+    "del": 3203,
     "languages": {
-      "C": 624,
+      "C": 838,
       "JavaScript": 0
     }
   },
