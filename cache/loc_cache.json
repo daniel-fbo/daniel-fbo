@@ -129,6 +129,23 @@
       "Python": 864
     }
   },
+  "daniel-fbo/estudos": {
+    "commits": 1,
+    "add": 13,
+    "del": 0,
+    "languages": {}
+  },
+  "daniel-fbo/estudos-app": {
+    "commits": 36,
+    "add": 24338,
+    "del": 544,
+    "languages": {
+      "Java": 11754,
+      "SQL": 286,
+      "Shell": 169,
+      "CSS": 343
+    }
+  },
   "nbg-cordeiro/OO-Final-Project": {
     "commits": 36,
     "add": 8717,
