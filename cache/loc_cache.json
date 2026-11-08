@@ -136,13 +136,13 @@
     "languages": {}
   },
   "daniel-fbo/estudos-app": {
-    "commits": 36,
-    "add": 24338,
-    "del": 544,
+    "commits": 46,
+    "add": 26263,
+    "del": 704,
     "languages": {
-      "Java": 11754,
-      "SQL": 286,
-      "Shell": 169,
+      "Java": 12592,
+      "Shell": 211,
+      "SQL": 292,
       "CSS": 343
     }
   },
