@@ -79,7 +79,7 @@ $ daniel.fbo --status
 
 > *Laboratório pessoal* — projetos que faço sozinho, para estudar ferramentas diferentes.
 
-| | nome | o que é | stack principal |
+| | nome | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
 | 📖 | [**Mini CAS**](https://github.com/daniel-fbo/mini-cas) | Sistema de álgebra computacional: aritmética exata, polinômios, grupos e expressões simbólicas | `C++` · `WebAssembly` |
 | 📖 | [**SRS API**](https://github.com/daniel-fbo/srs-api) | API REST de repetição espaçada (flashcards) com agendamento FSRS | `Java` · `Spring` · `PostgreSQL` |
@@ -108,7 +108,7 @@ $ daniel.fbo --status
 
 > *Prática contínua* — exercícios e anotações de estudo.
 
-| | nome | o que é | stack principal |
+| | nome | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
 | 📖 | [**Programming Study**](https://github.com/daniel-fbo/programming-study) | Estudo geral sobre programação | `General` |
 | 📖 | [**Code Problems**](https://github.com/daniel-fbo/code-problems) | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
