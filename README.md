@@ -111,7 +111,7 @@ $ daniel.fbo --status
 | | nome | o que é | stack principal |
 |:--:|:--|:--|:--|
 | 📖 | [**Programming Study**](https://github.com/daniel-fbo/Programming_Study) | Estudo geral sobre programação | `General` |
-| 🔒 | **Code Problems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
+| 📖 | [**Code Problems**](https://github.com/daniel-fbo/Code_Problems) | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
 
 <br/>
 
