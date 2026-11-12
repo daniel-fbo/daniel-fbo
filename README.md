@@ -93,14 +93,14 @@ $ daniel.fbo --status
 
 | | projeto | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
-| 📖 | [**Credifab**](https://github.com/daniel-fbo/Credifab_MDS_2026.1) | Plataforma de controle e gestão financeira para microempresas | `Python` |
-| 📖 | [**Structura**](https://github.com/daniel-fbo/Structura) | Detector de similaridade entre textos (indícios de plágio) com Dividir e Conquistar | `Python` · `JavaScript` |
-| 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/Nightfall-Looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` |
-| 📖 | [**Algoritmica**](https://github.com/daniel-fbo/Algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python` · `JavaScript` |
-| 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
-| 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
-| 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Jogo de Xadrez | `Python` |
-| 📖 | [**Mini-C**](https://github.com/daniel-fbo/Grupo13_COMPILADORES_2026_2) | Interpretador de C | `Flex` · `Bison` |
+| 📖 | [**Credifab**](https://github.com/daniel-fbo/credifab-mds-2026-1) | Plataforma de controle e gestão financeira para microempresas | `Python` |
+| 📖 | [**Structura**](https://github.com/daniel-fbo/structura) | Detector de similaridade entre textos (indícios de plágio) com Dividir e Conquistar | `Python` · `JavaScript` |
+| 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/nightfall-looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` |
+| 📖 | [**Algoritmica**](https://github.com/daniel-fbo/algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python` · `JavaScript` |
+| 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/trabalho-ed1-2025-4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
+| 📖 | [**PF-APC**](https://github.com/daniel-fbo/pf-apc-2025-1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
+| 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/chess-game-oo-epf) | Jogo de Xadrez | `Python` |
+| 📖 | [**Mini-C**](https://github.com/daniel-fbo/grupo13-compiladores-2026-2) | Interpretador de C | `Flex` · `Bison` |
 
 <br/>
 
@@ -110,8 +110,8 @@ $ daniel.fbo --status
 
 | | nome | o que é | stack principal |
 |:--:|:--|:--|:--|
-| 📖 | [**Programming Study**](https://github.com/daniel-fbo/Programming_Study) | Estudo geral sobre programação | `General` |
-| 📖 | [**Code Problems**](https://github.com/daniel-fbo/Code_Problems) | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
+| 📖 | [**Programming Study**](https://github.com/daniel-fbo/programming-study) | Estudo geral sobre programação | `General` |
+| 📖 | [**Code Problems**](https://github.com/daniel-fbo/code-problems) | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
 
 <br/>
 
