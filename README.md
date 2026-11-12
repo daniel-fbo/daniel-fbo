@@ -95,7 +95,7 @@ $ daniel.fbo --status
 |:--:|:--|:--|:--|
 | 📖 | [**Credifab**](https://github.com/daniel-fbo/credifab-mds-2026-1) | Plataforma de controle e gestão financeira para microempresas | `Python` |
 | 📖 | [**Structura**](https://github.com/daniel-fbo/structura) | Detector de similaridade entre textos (indícios de plágio) com Dividir e Conquistar | `Python` · `JavaScript` |
-| 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/nightfall-looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` |
+| 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/nightfall-looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` · `Pygame` |
 | 📖 | [**Algoritmica**](https://github.com/daniel-fbo/algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python` · `JavaScript` |
 | 📖 | [**Trabalho ED1**](https://github.com/daniel-fbo/trabalho-ed1-2025-4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
 | 📖 | [**PF APC**](https://github.com/daniel-fbo/pf-apc-2025-1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
