@@ -97,9 +97,9 @@ $ daniel.fbo --status
 | 📖 | [**Structura**](https://github.com/daniel-fbo/structura) | Detector de similaridade entre textos (indícios de plágio) com Dividir e Conquistar | `Python` · `JavaScript` |
 | 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/nightfall-looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` |
 | 📖 | [**Algoritmica**](https://github.com/daniel-fbo/algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python` · `JavaScript` |
-| 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/trabalho-ed1-2025-4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
-| 📖 | [**PF-APC**](https://github.com/daniel-fbo/pf-apc-2025-1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
-| 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/chess-game-oo-epf) | Jogo de Xadrez | `Python` |
+| 📖 | [**Trabalho ED1**](https://github.com/daniel-fbo/trabalho-ed1-2025-4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
+| 📖 | [**PF APC**](https://github.com/daniel-fbo/pf-apc-2025-1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
+| 📖 | [**ChessGame OO**](https://github.com/daniel-fbo/chess-game-oo-epf) | Jogo de Xadrez | `Python` |
 | 📖 | [**Mini-C**](https://github.com/daniel-fbo/grupo13-compiladores-2026-2) | Interpretador de C | `Flex` · `Bison` |
 
 <br/>
