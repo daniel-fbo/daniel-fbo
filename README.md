@@ -81,12 +81,12 @@ $ daniel.fbo --status
 
 | | nome | o que é | stack principal |
 |:--:|:--|:--|:--|
+| 📖 | [**Mini CAS**](https://github.com/daniel-fbo/mini-cas) | Sistema de álgebra computacional: aritmética exata, polinômios, grupos e expressões simbólicas | `C++` · `WebAssembly` |
+| 📖 | [**SRS API**](https://github.com/daniel-fbo/srs-api) | API REST de repetição espaçada (flashcards) com agendamento FSRS | `Java` · `Spring` · `PostgreSQL` |
+| 📖 | [**Algebra Visualizer**](https://github.com/daniel-fbo/algebra-visualizer) | Visualizador web de álgebra abstrata: grafos de Cayley, subgrupos e simetrias | `TypeScript` · `React` |
 | 🔒 | **Organum** | App de organização: tarefas, estudos e rotina | `Kotlin` |
 | 🔒 | **Papytron** | Pedra · papel · tesoura, jogável na web | `Java` · `TypeScript` |
 | 🔒 | **Khalix** | Calculadora desktop | `Python` · `JavaScript` |
-| 📖 | **Personal-Portfolio** | Site pessoal — documentação de código, projetos pessoais | `MkDocs` · `Material` |
-| 📖 | **CodeProblems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
-| 📖 | **Programming_Study** | Estudo geral sobre programação | ` General` |
 
 
 > *Acadêmico* — UnB (FGA).
@@ -94,15 +94,24 @@ $ daniel.fbo --status
 | | projeto | o que é | ferramentas principais |
 |:--:|:--|:--|:--|
 | 📖 | [**Credifab**](https://github.com/daniel-fbo/Credifab_MDS_2026.1) | Plataforma de controle e gestão financeira para microempresas | `Python` |
-| 📖 | [**Algoritmica**](https://github.com/daniel-fbo/Algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python, JavaScript` |
+| 📖 | [**Structura**](https://github.com/daniel-fbo/Structura) | Detector de similaridade entre textos (indícios de plágio) com Dividir e Conquistar | `Python` · `JavaScript` |
+| 📖 | [**Nightfall Looter**](https://github.com/daniel-fbo/Nightfall-Looter) | Jogo 2D educativo sobre algoritmos gulosos | `Python` |
+| 📖 | [**Algoritmica**](https://github.com/daniel-fbo/Algoritmica) | Jogo educativo sobre algoritmos de Grafos | `Python` · `JavaScript` |
 | 📖 | [**Trabalho_ED1**](https://github.com/daniel-fbo/Trabalho_ED1_2025.4) | CRUD com listas encadeadas e alocação manual de memória | `C` |
 | 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
 | 📖 | [**ChessGame-OO**](https://github.com/daniel-fbo/ChessGame-OO-EPF) | Jogo de Xadrez | `Python` |
-| 📖 | [**PF-APC**](https://github.com/daniel-fbo/PF-APC-2025.1) | Sistema de gerenciamento de candidatos a vagas em uma empresa | `C` · `SQL` |
-| 📖 | [**Mini-C**](https://github.com/daniel-fbo/Grupo13_COMPILADORES_2026_2.git) | Interpretador de C | `Flex, Bison` |
+| 📖 | [**Mini-C**](https://github.com/daniel-fbo/Grupo13_COMPILADORES_2026_2) | Interpretador de C | `Flex` · `Bison` |
 
+<br/>
 
+## ⌗ &nbsp;estudo
 
+> *Prática contínua* — exercícios e anotações de estudo.
+
+| | nome | o que é | stack principal |
+|:--:|:--|:--|:--|
+| 📖 | [**Programming Study**](https://github.com/daniel-fbo/Programming_Study) | Estudo geral sobre programação | `General` |
+| 🔒 | **Code Problems** | LeetCode &amp; juízes online — lógica e estruturas de dados | `C` · `C++` |
 
 <br/>
 
