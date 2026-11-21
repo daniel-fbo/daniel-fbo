@@ -45,12 +45,12 @@
     "languages": {}
   },
   "daniel-fbo/code-problems": {
-    "commits": 6,
-    "add": 1797,
-    "del": 2,
+    "commits": 7,
+    "add": 1890,
+    "del": 431,
     "languages": {
+      "C++": 225,
       "C": 583,
-      "C++": 132,
       "Python": 17,
       "Rust": 55
     }
@@ -138,14 +138,15 @@
     }
   },
   "daniel-fbo/programming-study": {
-    "commits": 11,
-    "add": 5789,
+    "commits": 12,
+    "add": 6245,
     "del": 18,
     "languages": {
+      "C": 4098,
+      "C++": 0,
       "Python": 65,
       "HTML": 24,
       "JavaScript": 16,
-      "C": 4098,
       "Kotlin": 9,
       "CSS": 32
     }
